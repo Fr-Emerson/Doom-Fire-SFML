@@ -102,19 +102,21 @@ public class Render: RenderWindow
             }
         }
     }
+    private void InitializeFire() {
+        for (int j = 0; j < NCols; j++) {
+            int lastIndex = (NRows - 1) * NCols + j;
+            _gridNumbers[lastIndex] = 36;
+        }
+    }
 
-    public void DrawGrid()
-    {
-        for (int i = 0; i < NRows; i++)
-        {
-            for (int j = 0; j < NCols; j++)
-            {
-                int lastIndex = (NRows - 1) * NCols + j;
-                _gridNumbers[lastIndex] = 36;
+    public void DrawGrid() {
+        for (int i = 0; i < NRows; i++) {
+            for (int j = 0; j < NCols; j++) {
                 Draw(_grid[i * NCols + j]);
             }
         }
     }
+
 
     private void WriteNumbers()
     {
@@ -135,7 +137,7 @@ public class Render: RenderWindow
     {
         for (int j = 0; j < NCols; j++)
         {
-            for (int i = 0; i < NCols; i++)
+            for (int i = 0; i < NRows; i++)
             {
                 int pixelIndex = j + NCols * i;
                 UpdateIntensity(pixelIndex);
@@ -166,22 +168,20 @@ public class Render: RenderWindow
     {
         
         InitializeGrid();
-        DrawGrid();
-        CalculateSpreadFire();
+        InitializeFire();
+        
         while (IsOpen)
         {
             float deltaTime = _clock.Restart().AsSeconds();
             _accumulator += deltaTime;
             DispatchEvents();
             Clear(Color.Black);
-            if (_accumulator >= _updateInterval)
-            {
+            if (_accumulator >= _updateInterval) {
                 _accumulator -= _updateInterval;
-                CalculateSpreadFire();
-                DrawGrid();
-                
+                CalculateSpreadFire();  
             }
-            
+        
+            DrawGrid();  
             Display();
         }
     }
