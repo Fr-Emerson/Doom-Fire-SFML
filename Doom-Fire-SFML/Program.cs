@@ -1,3 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Doom_Fire.Window;
+using SFML.Window;
 
-Console.WriteLine("Hello, World!");
+Render window = new Render(new VideoMode((1000,1000)),"Fire");
+window.Run();
