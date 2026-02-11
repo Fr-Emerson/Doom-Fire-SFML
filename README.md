@@ -14,7 +14,6 @@ Este projeto recria o clássico efeito de fogo do menu principal do Doom, desenv
 
 - 🎨 Paleta de 37 cores (do preto ao branco, passando por tons de vermelho, laranja e amarelo)
 - 🔥 Algoritmo de propagação de fogo com decay aleatório
-- ⚡ Renderização otimizada usando VertexArray
 - 🎮 Controle de framerate configurável
 - 📐 Tamanho de pixel personalizável
 
